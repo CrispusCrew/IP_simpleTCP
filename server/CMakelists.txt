@@ -1,0 +1,5 @@
+set(SERVER_SOURCES server.cpp logger.cpp)
+
+add_executable(server ${SERVER_SOURCES})
+
+target_include_directories(server PUBLIC ${ASIO_INCLUDE_DIR})

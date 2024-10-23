@@ -1,0 +1,5 @@
+set(CLIENT_SOURCES client.cpp)
+
+add_executable(client ${CLIENT_SOURCES})
+
+target_include_directories(client PUBLIC ${ASIO_INCLUDE_DIR})
