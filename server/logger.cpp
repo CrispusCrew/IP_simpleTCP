@@ -28,6 +28,7 @@ Logger::~Logger () {
 }
 
 void Logger::logString(const std::string& message) {
+    std::lock_guard<std::mutex> lock(logMutex);
     log << getSystemTime() << " ";
     log << message << std::endl;
 }
@@ -39,9 +40,9 @@ std::string Logger::getSystemTime() {
     std::tm TMsample;
 
     #ifdef _WIN32
-        localtime_s(&TMsample, &in_time_t);  // Для Windows
+        localtime_s(&TMsample, &in_time_t);  // For Windows
     #else
-        localtime_r(&in_time_t, &TMsample);  // Для POSIX
+        localtime_r(&in_time_t, &TMsample);  // For POSIX
     #endif
 
     // Форматируем дату и время в строку [YYYY-MM-DD HH:MM:SS]

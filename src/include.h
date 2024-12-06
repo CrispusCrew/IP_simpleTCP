@@ -1,4 +1,5 @@
-#pragma once
+#ifndef INCLUDEH
+#define INCLUDEH
 
 #include <set>
 #include <string>
@@ -15,5 +16,9 @@
 #include <cmath>
 #include <utility>
 #include <tuple>
+#include <mutex>
+#include <atomic>
 
 #include <asio.hpp>
+
+#endif

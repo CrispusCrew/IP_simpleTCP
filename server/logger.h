@@ -4,6 +4,7 @@ const std::string standartLogPathToFile = "log/log.txt";
 
 class Logger {
 private:
+    std::mutex logMutex;
     std::ofstream log;
     std::string getSystemTime();
     bool isFileExists(const std::string& pathToFile);

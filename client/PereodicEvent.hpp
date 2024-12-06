@@ -6,7 +6,7 @@ private:
     std::chrono::milliseconds period_;
     std::function <void()> event_;
 
-    bool running_;
+    std::atomic<bool> running_;
     std::thread mainThread_;
     
     void executePeriodically() {
@@ -26,12 +26,15 @@ public:
           mainThread_(&PereodicEvent::executePeriodically, this)
     {}
 
-
-    ~PereodicEvent() noexcept {
+    void handbrake() noexcept {
         running_ = false;
         if (mainThread_.joinable()) {
-            mainThread_.join(); 
+            mainThread_.join();
         }
+    }
+
+    ~PereodicEvent() noexcept {
+        handbrake();
     }
 
 };
