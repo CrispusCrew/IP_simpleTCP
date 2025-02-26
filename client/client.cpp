@@ -1,4 +1,5 @@
 #include "client.h"
+using asio::ip::tcp;
 
 Client::Client (std::string serverIP, uint_least16_t portTCP) :
 serverIP(serverIP), portTCP(portTCP), 
@@ -10,8 +11,8 @@ Client::~Client() {
 }
 
 void Client::connect() {
-    asio::ip::tcp::resolver resolver(io_context_);
-    asio::ip::tcp::resolver::results_type endpoints = resolver.resolve(serverIP, std::to_string(portTCP));
+    tcp::resolver resolver(io_context_);
+    tcp::resolver::results_type endpoints = resolver.resolve(serverIP, std::to_string(portTCP));
 
     try {
         asio::connect(socket_, endpoints);

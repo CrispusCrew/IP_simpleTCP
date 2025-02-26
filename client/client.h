@@ -1,7 +1,14 @@
-#include "include.h"
-#include "utilities.h"
+#pragma once
 
-using asio::ip::tcp;
+#include <memory>
+#include <string>
+#include <cstdint>
+#include <thread>
+#include <functional>
+
+#include <asio.hpp>
+
+#include "utilities.h"
 
 class Client : public std::enable_shared_from_this<Client>{
 private:
@@ -12,14 +19,6 @@ private:
     
     const std::string serverIP;
     const uint_least16_t portTCP;
- 
-    /*
-    std::shared_ptr<PereodicEvent<
-        Client, 
-        void (Client::*)(const std::string &), 
-        const std::string &>
-    > PereodicEventLifeExtender;
-    */
 
 public:
     Client (std::string serverIP, uint_least16_t portTCP);

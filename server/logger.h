@@ -1,4 +1,11 @@
-#include "include.h"
+#pragma once
+
+#include <string> 
+#include <fstream> 
+#include <mutex>       
+#include <stdexcept>   
+#include <chrono>       
+#include <ctime>            
 
 const std::string standartLogPathToFile = "log/log.txt";
 

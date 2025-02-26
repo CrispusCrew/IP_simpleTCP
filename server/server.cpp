@@ -22,7 +22,7 @@ void Session::accepting() {
                 else if (ec == asio::error::eof) 
                     scout << "Connection closed by client." << std::endl;
                 else 
-                    std::cerr << "Error during read: " << ec.message() << std::endl;
+                    scout << "Error during read: " << ec.message() << std::endl;
             });
     }
 
@@ -48,7 +48,7 @@ void Server::acceptingForSession() {
                 session->start();
             }, std::move(socket)).detach();
         }
-        else std::cerr << "Error during accept: " << ec.message() << std::endl;
+        else scout << "Error during accept: " << ec.message() << std::endl;
         acceptingForSession();
     });
 }

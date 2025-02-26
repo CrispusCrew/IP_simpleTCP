@@ -1,4 +1,9 @@
-#include "include.h"
+#pragma once
+#include <string>
+#include <iostream>
+#include <mutex>
+#include <cstdint>
+#include <math.h>
 
 // converting
 float safeStdStringToFloat(const std::string& str);
@@ -7,8 +12,6 @@ int64_t safeFloatToInt64(float flt);
 uint_least16_t safeStringToUint16(const char* str);
 
 
-#ifndef SAFE_COUT_H
-#define SAFE_COUT_H
 // multi-thread cout
 class SafeCout {
 public:
@@ -31,5 +34,3 @@ private:
 };
 
 extern SafeCout scout;
-
-#endif // SAFE_COUT_H

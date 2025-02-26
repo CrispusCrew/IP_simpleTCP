@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
         while (std::getline(std::cin, inputLine) && inputLine != "exit" && inputLine != "e");
     } 
     catch (std::exception& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
+        scout << "Error: " << e.what() << std::endl;
     }
     return 0;
 }
